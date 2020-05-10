@@ -33,7 +33,10 @@ android {
 dependencies {
 
     implementation(Dependencies.Kotlin.stdlib)
+
     implementation(Dependencies.AndroidX.coreKtx)
     implementation(Dependencies.AndroidX.constraintlayout)
+
+    implementation(Dependencies.Google.material)
 
 }

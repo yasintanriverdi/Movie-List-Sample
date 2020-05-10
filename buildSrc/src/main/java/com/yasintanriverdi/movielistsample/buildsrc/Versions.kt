@@ -6,6 +6,9 @@ object Versions {
     const val retrofit = "2.8.1"
     const val okHttp = "4.6.0"
 
+    // Google
+    const val material = "1.1.0"
+
     // AndroidX
     const val appCompat = "1.1.0"
     const val recyclerView = "1.1.0"

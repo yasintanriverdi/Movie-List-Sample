@@ -5,6 +5,10 @@ object Dependencies {
         const val extensions = "org.jetbrains.kotlin:kotlin-android-extensions:${Versions.kotlin}"
     }
 
+    object Google {
+        const val material = "com.google.android.material:material:${Versions.material}"
+    }
+
     object AndroidX {
         const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
         const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
