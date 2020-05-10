@@ -4,4 +4,6 @@ object Plugins {
     const val kotlinAndroid = "android"
     const val kotlinAndroidExtensions = "android.extensions"
     const val kotlinKapt = "kapt"
+
+    const val spotless = "com.diffplug.gradle.spotless"
 }

@@ -2,6 +2,10 @@ import com.android.build.gradle.BaseExtension
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
 
+plugins {
+    id(Plugins.spotless) version Versions.spotless
+}
+
 buildscript {
     repositories {
         google()
@@ -22,6 +26,35 @@ allprojects {
 }
 
 subprojects {
+
+    project.pluginManager.apply(Plugins.spotless)
+
+    spotless {
+        java {
+            // This is required otherwise the code in android modules isn"t picked up by spotless.
+            target("**/*.java")
+            trimTrailingWhitespace()
+            removeUnusedImports()
+            googleJavaFormat()
+        }
+
+        kotlin {
+            target("**/*.kt")
+            ktlint("0.29.0").userData(hashMapOf("indent_size" to "4", "android" to "true", "max_line_length" to "200"))
+        }
+
+        kotlinGradle {
+            target("**/*.gradle.kts")
+            ktlint("0.29.0").userData(hashMapOf("indent_size" to "4", "android" to "true", "max_line_length" to "200"))
+        }
+
+        format("misc") {
+            target("**/.gitignore", "**/*.gradle", "**/*.md", "**/*.sh", "**/*.yml")
+            trimTrailingWhitespace()
+            endWithNewline()
+        }
+    }
+
     project.plugins.whenPluginAdded {
         when (this) {
             is AppPlugin, is LibraryPlugin -> {
@@ -32,12 +65,9 @@ subprojects {
                         minSdkVersion(Configs.Versions.minSdk)
                         targetSdkVersion(Configs.Versions.targetSdk)
                     }
+
                 }
             }
         }
     }
-}
-
-task("clean") {
-    delete { rootProject.buildDir }
 }

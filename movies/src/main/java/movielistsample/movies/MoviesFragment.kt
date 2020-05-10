@@ -1,5 +1,3 @@
 package movielistsample.movies
 
-class MoviesFragment {
-
-}
+class MoviesFragment

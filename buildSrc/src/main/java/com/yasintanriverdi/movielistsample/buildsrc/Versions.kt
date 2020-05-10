@@ -20,4 +20,7 @@ object Versions {
     const val coreKtx = "1.2.0"
     const val lifecycle = "2.2.0"
 
+    // Plugins
+    const val spotless = "3.27.0"
+
 }

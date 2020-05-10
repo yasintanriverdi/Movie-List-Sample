@@ -46,6 +46,4 @@ dependencies {
     kapt(Dependencies.Dagger.compiler)
 
     implementation(Dependencies.Google.material)
-
-
 }

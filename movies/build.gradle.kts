@@ -17,5 +17,4 @@ dependencies {
     // Dagger
     implementation(Dependencies.Dagger.dagger)
     kapt(Dependencies.Dagger.compiler)
-
 }
