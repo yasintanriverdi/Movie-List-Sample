@@ -3,4 +3,5 @@ object Plugins {
     const val androidLibrary = "com.android.library"
     const val kotlinAndroid = "android"
     const val kotlinAndroidExtensions = "android.extensions"
+    const val kotlinKapt = "kapt"
 }

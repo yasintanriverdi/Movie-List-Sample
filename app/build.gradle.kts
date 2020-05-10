@@ -2,6 +2,7 @@ plugins {
     id(Plugins.androidApplication)
     kotlin(Plugins.kotlinAndroid)
     kotlin(Plugins.kotlinAndroidExtensions)
+    kotlin(Plugins.kotlinKapt)
 }
 
 android {
@@ -32,11 +33,19 @@ android {
 
 dependencies {
 
+    implementation(project(":movies"))
+
     implementation(Dependencies.Kotlin.stdlib)
 
+    // AndroidX
     implementation(Dependencies.AndroidX.coreKtx)
     implementation(Dependencies.AndroidX.constraintlayout)
 
+    // Dagger
+    implementation(Dependencies.Dagger.dagger)
+    kapt(Dependencies.Dagger.compiler)
+
     implementation(Dependencies.Google.material)
+
 
 }
