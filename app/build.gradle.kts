@@ -34,7 +34,7 @@ android {
 dependencies {
 
     implementation(project(":core"))
-    implementation(project(":movies"))
+    implementation(project(":features:movies"))
 
     implementation(Dependencies.Kotlin.stdlib)
 
