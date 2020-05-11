@@ -1,6 +1,6 @@
 include(
     ":app",
     "core",
-    ":features:movies"
+    ":feature:movies"
 )
 rootProject.name = "Movie List Sample"

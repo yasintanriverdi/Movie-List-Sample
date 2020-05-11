@@ -34,7 +34,7 @@ android {
 dependencies {
 
     implementation(project(":core"))
-    implementation(project(":features:movies"))
+    implementation(project(":feature:movies"))
 
     implementation(Dependencies.Kotlin.stdlib)
 
@@ -44,6 +44,8 @@ dependencies {
 
     // Dagger
     implementation(Dependencies.Dagger.dagger)
+    implementation("androidx.navigation:navigation-fragment-ktx:2.2.1")
+    implementation("androidx.navigation:navigation-ui-ktx:2.2.1")
     kapt(Dependencies.Dagger.compiler)
 
     implementation(Dependencies.Google.material)
