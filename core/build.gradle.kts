@@ -8,7 +8,7 @@ plugins {
 
 android {
     buildTypes.forEach {
-        it.buildConfigField(type = "String", name = "TMDB_API_BASE_URL", value = "test")
+        it.buildConfigField(type = "String", name = "TMDB_API_BASE_URL", value = "https://www.google.com")
         it.buildConfigField(type = "String", name = "TMDB_API_KEY", value = getLocalProperty("TMDB_API_KEY", project))
     }
 }

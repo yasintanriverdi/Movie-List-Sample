@@ -7,9 +7,13 @@ plugins {
 
 dependencies {
 
+    implementation(project(":core"))
+    implementation(project(":lib:commons"))
+
     implementation(Dependencies.Kotlin.stdlib)
 
     // AndroidX
+    implementation(Dependencies.AndroidX.constraintlayout)
     implementation(Dependencies.AndroidX.Fragment.fragment)
     implementation(Dependencies.AndroidX.Fragment.fragmentKtx)
     implementation(Dependencies.AndroidX.Lifecycle.extensions)

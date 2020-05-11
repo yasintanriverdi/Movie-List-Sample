@@ -41,11 +41,11 @@ dependencies {
     // AndroidX
     implementation(Dependencies.AndroidX.coreKtx)
     implementation(Dependencies.AndroidX.constraintlayout)
+    implementation(Dependencies.AndroidX.Navigation.fragment)
+    implementation(Dependencies.AndroidX.Navigation.ui)
 
     // Dagger
     implementation(Dependencies.Dagger.dagger)
-    implementation("androidx.navigation:navigation-fragment-ktx:2.2.1")
-    implementation("androidx.navigation:navigation-ui-ktx:2.2.1")
     kapt(Dependencies.Dagger.compiler)
 
     implementation(Dependencies.Google.material)
