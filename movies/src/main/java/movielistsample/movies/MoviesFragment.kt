@@ -1,3 +1,8 @@
 package movielistsample.movies
 
-class MoviesFragment
+import androidx.fragment.app.Fragment
+
+class MoviesFragment : Fragment() {
+
+    // TODO - will be implemented
+}

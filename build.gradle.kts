@@ -7,6 +7,7 @@ plugins {
 }
 
 buildscript {
+    val kotlin_version by extra("1.3.61")
     repositories {
         google()
         jcenter()
@@ -15,6 +16,7 @@ buildscript {
     dependencies {
         classpath(Classpaths.gradle)
         classpath(Classpaths.kotlinGradle)
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
     }
 }
 
@@ -66,6 +68,17 @@ subprojects {
                         targetSdkVersion(Configs.Versions.targetSdk)
                     }
 
+                    compileOptions {
+                        targetCompatibility = JavaVersion.VERSION_1_8
+                        sourceCompatibility = JavaVersion.VERSION_1_8
+                    }
+                }
+            }
+
+            is JavaPlugin -> {
+                the<JavaPluginConvention>().apply {
+                    sourceCompatibility = JavaVersion.VERSION_1_8
+                    targetCompatibility = JavaVersion.VERSION_1_8
                 }
             }
         }

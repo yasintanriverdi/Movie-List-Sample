@@ -1,3 +1,4 @@
+import com.yasintanriverdi.movielistsample.buildsrc.utils.getLocalProperty
 
 plugins {
     id(Plugins.androidLibrary)
@@ -5,23 +6,24 @@ plugins {
     kotlin(Plugins.kotlinKapt)
 }
 
+android {
+    buildTypes.forEach {
+        it.buildConfigField(type = "String", name = "TMDB_API_BASE_URL", value = "test")
+        it.buildConfigField(type = "String", name = "TMDB_API_KEY", value = getLocalProperty("TMDB_API_KEY", project))
+    }
+}
+
 dependencies {
 
     implementation(Dependencies.Kotlin.stdlib)
-
-    // AndroidX
-    implementation(Dependencies.AndroidX.Fragment.fragment)
-    implementation(Dependencies.AndroidX.Fragment.fragmentKtx)
-    implementation(Dependencies.AndroidX.Lifecycle.extensions)
-    implementation(Dependencies.AndroidX.Lifecycle.viewmodelKtx)
-    implementation(Dependencies.AndroidX.recyclerView)
 
     // Dagger
     implementation(Dependencies.Dagger.dagger)
     kapt(Dependencies.Dagger.compiler)
 
-    // Retrofit
+    // Retrofit-OkHttp
     implementation(Dependencies.Retrofit.retrofit)
     implementation(Dependencies.Retrofit.moshi)
     implementation(Dependencies.OkHttp.okhttp)
+    implementation(Dependencies.OkHttp.loggingInterceptor)
 }
