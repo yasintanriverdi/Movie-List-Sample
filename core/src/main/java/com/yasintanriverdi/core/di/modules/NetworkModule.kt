@@ -1,6 +1,7 @@
 package com.yasintanriverdi.core.di.modules
 
 import com.yasintanriverdi.core.BuildConfig
+import com.yasintanriverdi.core.network.interceptors.RequestInterceptor
 import com.yasintanriverdi.core.network.repositories.MovieRepository
 import com.yasintanriverdi.core.network.services.MovieService
 import dagger.Module
@@ -24,10 +25,14 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient {
+    fun provideHttpClient(
+        loggingInterceptor: HttpLoggingInterceptor,
+        requestInterceptor: RequestInterceptor
+    ): OkHttpClient {
         val clientBuilder = OkHttpClient.Builder()
+            .addInterceptor(requestInterceptor)
         if (BuildConfig.DEBUG) {
-            clientBuilder.addInterceptor(interceptor)
+            clientBuilder.addInterceptor(loggingInterceptor)
         }
         return clientBuilder.build()
     }
