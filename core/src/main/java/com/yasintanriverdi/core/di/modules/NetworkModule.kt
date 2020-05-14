@@ -2,7 +2,6 @@ package com.yasintanriverdi.core.di.modules
 
 import com.yasintanriverdi.core.BuildConfig
 import com.yasintanriverdi.core.network.interceptors.RequestInterceptor
-import com.yasintanriverdi.core.network.repositories.MovieRepository
 import com.yasintanriverdi.core.network.services.MovieService
 import dagger.Module
 import dagger.Provides
@@ -39,8 +38,9 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofitBuilder() =
+    fun provideRetrofitBuilder(httpClient: OkHttpClient) =
         Retrofit.Builder()
+            .client(httpClient)
             .baseUrl(BuildConfig.TMDB_API_BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
@@ -48,8 +48,4 @@ class NetworkModule {
     @Singleton
     @Provides
     fun provideMovieService(retrofit: Retrofit) = retrofit.create(MovieService::class.java)
-
-    @Singleton
-    @Provides
-    fun provideMovieRepository(service: MovieService) = MovieRepository(service)
 }

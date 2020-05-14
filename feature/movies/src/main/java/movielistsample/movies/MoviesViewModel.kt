@@ -1,12 +1,27 @@
 package movielistsample.movies
 
 import androidx.lifecycle.ViewModel
-import com.yasintanriverdi.core.network.repositories.MovieRepository
+import androidx.lifecycle.viewModelScope
+import com.yasintanriverdi.core.data.Result
+import com.yasintanriverdi.core.usecases.FetchMoviesUseCase
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MoviesViewModel @Inject constructor(
-    val movieRepository: MovieRepository
+    private val fetchMoviesUseCase: FetchMoviesUseCase,
+    dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
-    // TODO - will be implemented
+    init {
+        viewModelScope.launch(dispatcher) {
+            when (val moviesResult = fetchMoviesUseCase.fetchMovies(page = 1)) {
+                is Result.Success -> {
+                    val response = moviesResult.data
+                }
+                is Result.Error -> {
+                }
+            }
+        }
+    }
 }

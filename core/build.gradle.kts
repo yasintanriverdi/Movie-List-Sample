@@ -17,6 +17,8 @@ dependencies {
 
     implementation(Dependencies.Kotlin.stdlib)
 
+    implementation(Dependencies.Kotlin.Coroutines.core)
+
     // Dagger
     implementation(Dependencies.Dagger.dagger)
     kapt(Dependencies.Dagger.compiler)

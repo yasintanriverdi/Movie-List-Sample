@@ -2,6 +2,8 @@ object Versions {
     const val kotlin = "1.3.72"
     const val gradle = "4.1.0-alpha09"
 
+    const val coroutines = "1.3.6"
+
     const val dagger = "2.27"
     const val retrofit = "2.8.1"
     const val okHttp = "4.6.0"

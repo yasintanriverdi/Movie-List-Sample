@@ -1,4 +1,3 @@
-include(":commons")
 include(
     ":app",
     "core",
