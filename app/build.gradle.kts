@@ -21,13 +21,20 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
 
         getByName("debug") {
             versionNameSuffix = "-dev"
             applicationIdSuffix = ".debug"
         }
+    }
+
+    buildFeatures {
+        dataBinding = true
     }
 }
 

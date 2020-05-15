@@ -5,8 +5,11 @@ object Versions {
     const val coroutines = "1.3.6"
 
     const val dagger = "2.27"
+
     const val retrofit = "2.8.1"
     const val okHttp = "4.6.0"
+
+    const val glide = "4.11.0"
 
     // Google
     const val material = "1.1.0"
@@ -21,6 +24,7 @@ object Versions {
     const val constraintLayout = "2.0.0-beta5"
     const val coreKtx = "1.2.0"
     const val lifecycle = "2.2.0"
+    const val paging = "2.1.2"
 
     // Plugins
     const val spotless = "3.27.0"

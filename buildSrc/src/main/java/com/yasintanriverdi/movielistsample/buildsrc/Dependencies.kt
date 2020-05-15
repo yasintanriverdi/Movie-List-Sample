@@ -53,6 +53,11 @@ object Dependencies {
             const val viewmodelKtx =
                 "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
         }
+
+        object Paging {
+            const val core = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
+            const val common = "androidx.paging:paging-common-ktx:${Versions.paging}"
+        }
     }
 
     object Dagger {
@@ -68,5 +73,10 @@ object Dependencies {
     object OkHttp {
         const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okHttp}"
         const val loggingInterceptor = "com.squareup.okhttp3:logging-interceptor:${Versions.okHttp}"
+    }
+
+    object Glide {
+        const val core = "com.github.bumptech.glide:glide:${Versions.glide}"
+        const val compiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
     }
 }

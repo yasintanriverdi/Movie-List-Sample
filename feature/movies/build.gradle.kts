@@ -5,6 +5,12 @@ plugins {
     kotlin(Plugins.kotlinKapt)
 }
 
+android {
+    buildFeatures {
+        dataBinding = true
+    }
+}
+
 dependencies {
 
     implementation(project(":core"))
@@ -19,6 +25,7 @@ dependencies {
     implementation(Dependencies.AndroidX.Lifecycle.extensions)
     implementation(Dependencies.AndroidX.Lifecycle.viewmodelKtx)
     implementation(Dependencies.AndroidX.recyclerView)
+    implementation(Dependencies.AndroidX.Paging.core)
 
     // Dagger
     implementation(Dependencies.Dagger.dagger)

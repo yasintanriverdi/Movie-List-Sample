@@ -38,4 +38,8 @@ class MovieRemoteDataSource @Inject constructor(
         }
         return onError.invoke()
     }
+
+    companion object {
+        private const val MOVIE_PAGE_SIZE = 20
+    }
 }
