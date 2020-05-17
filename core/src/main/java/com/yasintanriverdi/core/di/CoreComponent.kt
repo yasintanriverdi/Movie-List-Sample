@@ -2,6 +2,7 @@ package com.yasintanriverdi.core.di
 
 import android.content.Context
 import com.yasintanriverdi.core.data.AppCoroutineDispatchers
+import com.yasintanriverdi.core.database.MovieDao
 import com.yasintanriverdi.core.di.modules.ContextModule
 import com.yasintanriverdi.core.di.modules.DataModule
 import com.yasintanriverdi.core.di.modules.DatabaseModule
@@ -24,6 +25,8 @@ interface CoreComponent {
     fun context(): Context
 
     fun movieService(): MovieService
+
+    fun movieDao(): MovieDao
 
     fun coroutineDispatchers(): AppCoroutineDispatchers
 }

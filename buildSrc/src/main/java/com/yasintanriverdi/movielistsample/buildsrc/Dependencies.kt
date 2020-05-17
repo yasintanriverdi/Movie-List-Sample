@@ -43,11 +43,6 @@ object Dependencies {
                 "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
         }
 
-        const val constraintlayout =
-            "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
-
-        const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
-
         object Lifecycle {
             const val extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
             const val viewmodelKtx =
@@ -58,6 +53,18 @@ object Dependencies {
             const val core = "androidx.paging:paging-runtime-ktx:${Versions.paging}"
             const val common = "androidx.paging:paging-common-ktx:${Versions.paging}"
         }
+
+        object Room {
+            const val core = "androidx.room:room-runtime:${Versions.room}"
+            const val compiler = "androidx.room:room-compiler:${Versions.room}"
+            const val extensions = "androidx.room:room-ktx:${Versions.room}"
+        }
+
+        const val constraintlayout =
+            "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
+
+        const val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
+
     }
 
     object Dagger {
