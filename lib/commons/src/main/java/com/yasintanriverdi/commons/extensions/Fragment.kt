@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
 
 fun <VM : ViewModel> Fragment.viewModel(
     key: String? = null,
@@ -24,3 +25,11 @@ fun <VM : ViewModel> Fragment.viewModel(
 }
 
 val Fragment.appContext: Context get() = requireActivity().applicationContext
+
+fun Fragment.showSnackbar(message: String) {
+    Snackbar.make(
+        requireView(),
+        message,
+        Snackbar.LENGTH_LONG
+    ).show()
+}

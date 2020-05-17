@@ -1,7 +1,7 @@
 package movielistsample.movies
 
-import com.yasintanriverdi.core.data.UIState
+import com.yasintanriverdi.core.data.DataState
 
 data class MoviesViewState(
-    val uiState: UIState
+    val dataState: DataState
 )

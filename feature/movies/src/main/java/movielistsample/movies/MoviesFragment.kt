@@ -6,10 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import com.yasintanriverdi.commons.extensions.appContext
 import com.yasintanriverdi.commons.extensions.observe
+import com.yasintanriverdi.commons.extensions.showSnackbar
 import com.yasintanriverdi.commons.ui.GridViewItemDecoration
+import com.yasintanriverdi.core.data.DataState
 import com.yasintanriverdi.core.data.entities.Movie
 import com.yasintanriverdi.core.di.provider.CoreComponentProvider
 import com.yasintanriverdi.movies.R
@@ -24,11 +27,9 @@ class MoviesFragment : Fragment(R.layout.fragment_movies) {
     @Inject
     lateinit var viewModel: MoviesViewModel
 
-    lateinit var binding: FragmentMoviesBinding
+    private lateinit var binding: FragmentMoviesBinding
 
-    private val adapter by lazy {
-        MoviesAdapter()
-    }
+    private lateinit var adapter: MoviesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,16 +61,23 @@ class MoviesFragment : Fragment(R.layout.fragment_movies) {
                 spacing = resources.getDimensionPixelOffset(R.dimen.movie_item_spacing)
             )
         )
+        adapter = MoviesAdapter()
         binding.moviesList.adapter = adapter
     }
 
     private fun onViewStateChanged(viewState: MoviesViewState) {
         binding.viewState = viewState
+        when (val dataState = viewState.dataState) {
+            is DataState.Error -> {
+                showSnackbar(dataState.message)
+            }
+            else -> { // do nothing }
+            }
+        }
     }
 
-    private fun onViewDataChanged(movies: List<Movie>) {
-        adapter.movies.addAll(movies)
-        adapter.notifyDataSetChanged()
+    private fun onViewDataChanged(movies: PagedList<Movie>) {
+        adapter.submitList(movies)
     }
 
     private fun setupDependencyInjection() {

@@ -1,45 +1,37 @@
 package com.yasintanriverdi.core.datasource.remote
 
 import com.yasintanriverdi.core.data.Result
-import com.yasintanriverdi.core.data.entities.Movie
-import com.yasintanriverdi.core.mappers.MoviesResponseToMovieMapper
 import com.yasintanriverdi.core.network.responses.PopularMoviesResponse
+import com.yasintanriverdi.core.network.responses.PopularMoviesResponseItem
 import com.yasintanriverdi.core.network.services.MovieService
 import retrofit2.Response
-import java.io.IOException
 import javax.inject.Inject
 
 class MovieRemoteDataSource @Inject constructor(
-    private val movieService: MovieService,
-    private val movieMapper: MoviesResponseToMovieMapper
+    private val movieService: MovieService
 ) {
 
-    suspend fun fetchMovies(page: Int): Result<List<Movie>> {
+    suspend fun fetchMovies(page: Int): Result<List<PopularMoviesResponseItem>> {
         return try {
             val response = movieService.fetchMovies(page)
             getResult(response = response, onError = {
-                Result.Error(IOException("Error fetching movies ${response.code()} ${response.message()}"))
+                Result.Error("Error fetching movies ${response.code()} ${response.message()}")
             })
         } catch (e: Exception) {
-            Result.Error(IOException("Error fetching movies", e))
+            Result.Error("Error fetching movies")
         }
     }
 
-    private suspend fun getResult(
+    private inline fun getResult(
         response: Response<PopularMoviesResponse>,
         onError: () -> Result.Error
-    ): Result<List<Movie>> {
+    ): Result<List<PopularMoviesResponseItem>> {
         if (response.isSuccessful) {
-            response.body()?.let { body ->
-                val result = body.results
-                val mappedResults = movieMapper.map(result)
-                return Result.Success(mappedResults)
+            val body = response.body()
+            if (body != null) {
+                return Result.Success(body.results)
             }
         }
         return onError.invoke()
-    }
-
-    companion object {
-        private const val MOVIE_PAGE_SIZE = 20
     }
 }

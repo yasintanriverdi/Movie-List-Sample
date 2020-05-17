@@ -1,47 +1,30 @@
 package movielistsample.movies
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.yasintanriverdi.core.data.Result
-import com.yasintanriverdi.core.data.UIState
+import androidx.paging.LivePagedListBuilder
+import androidx.paging.PagedList
 import com.yasintanriverdi.core.data.entities.Movie
-import com.yasintanriverdi.core.usecases.FetchMoviesUseCase
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MoviesViewModel @Inject constructor(
-    private val fetchMoviesUseCase: FetchMoviesUseCase,
-    private val dispatcher: CoroutineDispatcher
+    dataSourceFactory: MoviesDataSourceFactory
 ) : ViewModel() {
 
-    private val _data = MutableLiveData<List<Movie>>()
-    val data: LiveData<List<Movie>>
-        get() = _data
+    private val pagedListConfig =
+        PagedList.Config.Builder()
+            .setInitialLoadSizeHint(20)
+            .setEnablePlaceholders(true)
+            .setPageSize(20)
+            .build()
 
-    private val _state = MutableLiveData<MoviesViewState>()
-    val state: LiveData<MoviesViewState>
-        get() = _state
-
-    init {
-        fetchMovies()
+    private val dataState = Transformations.switchMap(dataSourceFactory.sourceLiveData) {
+        it.dataState
     }
 
-    internal fun fetchMovies() {
-        _state.postValue(MoviesViewState(uiState = UIState.Loading))
-        viewModelScope.launch(dispatcher) {
-            when (val moviesResult = fetchMoviesUseCase.fetchMovies(page = 1)) {
-                is Result.Success -> {
-                    _state.postValue(MoviesViewState(uiState = UIState.Content))
-                    _data.postValue(moviesResult.data)
-                }
-                is Result.Error -> {
-                    val errorState = UIState.Error(moviesResult.exception.message!!)
-                    _state.postValue(MoviesViewState(uiState = errorState))
-                }
-            }
-        }
-    }
+    internal val data: LiveData<PagedList<Movie>> =
+        LivePagedListBuilder(dataSourceFactory, pagedListConfig).build()
+
+    val state = Transformations.map(dataState) { MoviesViewState(dataState = it) }
 }

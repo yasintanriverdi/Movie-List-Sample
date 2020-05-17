@@ -20,6 +20,8 @@ dependencies {
     implementation(Dependencies.AndroidX.Lifecycle.viewmodelKtx)
     implementation(Dependencies.AndroidX.recyclerView)
 
+    implementation(Dependencies.Google.material)
+
     // Glide
     implementation(Dependencies.Glide.core)
     kapt(Dependencies.Glide.compiler)
