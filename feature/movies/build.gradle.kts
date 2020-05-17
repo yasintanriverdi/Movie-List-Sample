@@ -27,6 +27,8 @@ dependencies {
     implementation(Dependencies.AndroidX.recyclerView)
     implementation(Dependencies.AndroidX.Paging.core)
 
+    implementation(Dependencies.Google.material)
+
     // Dagger
     implementation(Dependencies.Dagger.dagger)
     kapt(Dependencies.Dagger.compiler)

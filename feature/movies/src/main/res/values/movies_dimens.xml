@@ -2,6 +2,9 @@
 <resources>
 
     <dimen name="movie_item_spacing">16dp</dimen>
+    <dimen name="movie_item_title_margin">4dp</dimen>
     <dimen name="movie_item_poster_height">240dp</dimen>
+    <dimen name="movie_item_card_radius">4dp</dimen>
+    <dimen name="movie_item_card_elevation">8dp</dimen>
 
 </resources>
