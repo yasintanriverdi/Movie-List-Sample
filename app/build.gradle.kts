@@ -42,6 +42,7 @@ dependencies {
 
     implementation(project(":core"))
     implementation(project(":feature:movies"))
+    implementation(project(":feature:moviedetail"))
 
     implementation(Dependencies.Kotlin.stdlib)
 
