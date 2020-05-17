@@ -1,7 +1,7 @@
 package com.yasintanriverdi.core.data
 
 sealed class DataState {
-    data class Success(val isEmpty: Boolean, val hasMore: Boolean) : DataState()
+    data class Success(val isEmpty: Boolean = false, val hasMore: Boolean = false) : DataState()
     object Loading : DataState()
     data class Error(val message: String) : DataState()
 

@@ -8,9 +8,7 @@ import movielistsample.movies.MoviesFragment
 @FeatureScope
 @Component(
     modules = [MoviesModule::class],
-    dependencies = [CoreComponent::class]
-)
+    dependencies = [CoreComponent::class])
 interface MoviesComponent {
-
     fun inject(moviesFragment: MoviesFragment)
 }

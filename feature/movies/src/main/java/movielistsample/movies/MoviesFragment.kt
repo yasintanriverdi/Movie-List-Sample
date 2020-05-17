@@ -22,7 +22,7 @@ import movielistsample.movies.di.DaggerMoviesComponent
 import movielistsample.movies.di.MoviesModule
 import javax.inject.Inject
 
-class MoviesFragment : Fragment(R.layout.fragment_movies) {
+class MoviesFragment : Fragment() {
 
     @Inject
     lateinit var viewModel: MoviesViewModel

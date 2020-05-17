@@ -2,7 +2,7 @@ package movielistsample.movies.usecases
 
 import com.yasintanriverdi.core.data.Result
 import com.yasintanriverdi.core.data.entities.Movie
-import movielistsample.movies.repositories.MovieRepository
+import com.yasintanriverdi.core.repositories.MovieRepository
 import javax.inject.Inject
 
 class FetchMoviesUseCase @Inject constructor(private val movieRepository: MovieRepository) {

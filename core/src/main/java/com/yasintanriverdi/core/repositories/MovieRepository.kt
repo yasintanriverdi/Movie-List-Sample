@@ -1,4 +1,4 @@
-package movielistsample.movies.repositories
+package com.yasintanriverdi.core.repositories
 
 import com.yasintanriverdi.core.data.Result
 import com.yasintanriverdi.core.data.entities.Movie
@@ -23,4 +23,6 @@ class MovieRepository @Inject constructor(
             is Result.Error -> response
         }
     }
+
+    suspend fun getMovieById(movieId: Int) = localDataSource.getMovieById(movieId)
 }
