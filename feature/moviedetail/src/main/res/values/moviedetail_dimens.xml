@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="moviedetail_poster_height">300dp</dimen>
+    <dimen name="moviedetail_home_padding">16dp</dimen>
+    <dimen name="moviedetail_title_expanded_margin_start">8dp</dimen>
+    <dimen name="moviedetail_title_expanded_margin_bottom">24dp</dimen>
+    <dimen name="moviedetail_overview_padding">16dp</dimen>
+
+</resources>

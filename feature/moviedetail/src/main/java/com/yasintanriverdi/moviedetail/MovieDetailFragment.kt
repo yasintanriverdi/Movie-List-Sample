@@ -4,26 +4,28 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.yasintanriverdi.commons.extensions.observe
 import com.yasintanriverdi.commons.extensions.hide
 import com.yasintanriverdi.commons.extensions.show
 import com.yasintanriverdi.commons.extensions.showSnackbar
 import com.yasintanriverdi.commons.extensions.appContext
+import com.yasintanriverdi.commons.extensions.loadImage
 import com.yasintanriverdi.core.data.DataState
 import com.yasintanriverdi.core.data.entities.Movie
 import com.yasintanriverdi.core.di.provider.CoreComponentProvider
-import com.yasintanriverdi.moviedetail.databinding.FragmentMovieDetailBinding
+import com.yasintanriverdi.moviedetail.databinding.MoviedetailFragmentDetailBinding
 import com.yasintanriverdi.moviedetail.di.DaggerMovieDetailComponent
 import com.yasintanriverdi.moviedetail.di.MovieDetailModule
 import javax.inject.Inject
 
-class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
+class MovieDetailFragment : Fragment(R.layout.moviedetail_fragment_detail) {
 
     @Inject
     lateinit var viewModel: MovieDetailViewModel
 
-    private lateinit var binding: FragmentMovieDetailBinding
+    private lateinit var binding: MoviedetailFragmentDetailBinding
 
     private val args: MovieDetailFragmentArgs by navArgs()
 
@@ -34,10 +36,20 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentMovieDetailBinding.bind(view)
+        binding = MoviedetailFragmentDetailBinding.bind(view)
+
+        setupListeners()
+
         observe(viewModel.state, ::onViewStateChanged)
         observe(viewModel.data, ::onViewDataChanged)
+
         viewModel.fetchMovie(args.movieId)
+    }
+
+    private fun setupListeners() {
+        binding.home.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun onViewStateChanged(viewState: MovieDetailViewState) {
@@ -54,7 +66,9 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     }
 
     private fun onViewDataChanged(movie: Movie) {
-        // TODO - update UI
+        binding.title.text = movie.title
+        binding.overview.text = movie.overview
+        binding.poster.loadImage(movie.posterUrl)
     }
 
     private fun setupDependencyInjection() {

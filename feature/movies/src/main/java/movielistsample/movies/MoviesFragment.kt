@@ -16,7 +16,6 @@ import com.yasintanriverdi.commons.ui.GridViewItemDecoration
 import com.yasintanriverdi.core.data.DataState
 import com.yasintanriverdi.core.data.entities.Movie
 import com.yasintanriverdi.core.di.provider.CoreComponentProvider
-import com.yasintanriverdi.moviedetail.MovieDetailFragmentArgs
 import com.yasintanriverdi.movies.R
 import com.yasintanriverdi.movies.databinding.FragmentMoviesBinding
 import movielistsample.movies.adapter.MoviesAdapter
@@ -87,8 +86,9 @@ class MoviesFragment : Fragment() {
     private fun onViewEvent(viewEvent: MoviesEvent) {
         when (viewEvent) {
             is MoviesEvent.OpenMovieDetail -> {
-                val args = MovieDetailFragmentArgs(movieId = viewEvent.movieId).toBundle()
-                findNavController().navigate(R.id.action_moviesFragment_to_movieDetailFragment, args)
+                findNavController().navigate(
+                    MoviesFragmentDirections.actionMoviesFragmentToMovieDetailFragment(viewEvent.movieId)
+                )
             }
         }
     }

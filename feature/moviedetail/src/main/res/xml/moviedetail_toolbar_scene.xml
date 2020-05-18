@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@id/collapsed"
+        motion:constraintSetStart="@id/expanded">
+
+        <OnSwipe
+            motion:dragDirection="dragUp"
+            motion:touchAnchorId="@id/content"
+            motion:touchAnchorSide="top" />
+
+        <KeyFrameSet>
+            <KeyAttribute
+                motion:framePosition="60"
+                motion:motionTarget="@id/poster">
+                <CustomAttribute
+                    motion:attributeName="imageAlpha"
+                    motion:customIntegerValue="255" />
+            </KeyAttribute>
+            <KeyAttribute
+                motion:framePosition="90"
+                motion:motionTarget="@id/poster">
+                <CustomAttribute
+                    motion:attributeName="imageAlpha"
+                    motion:customIntegerValue="0" />
+            </KeyAttribute>
+            <KeyPosition
+                motion:framePosition="50"
+                motion:keyPositionType="pathRelative"
+                motion:motionTarget="@id/title"
+                motion:percentX="0.9" />
+        </KeyFrameSet>
+    </Transition>
+
+    <ConstraintSet android:id="@+id/expanded">
+        <Constraint
+            android:id="@id/poster"
+            android:layout_height="@dimen/moviedetail_poster_height"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/moviedetail_title_expanded_margin_start"
+            android:layout_marginBottom="@dimen/moviedetail_title_expanded_margin_bottom"
+            android:scaleX="1.0"
+            android:scaleY="1.0"
+            motion:layout_constraintBottom_toBottomOf="@id/poster"
+            motion:layout_constraintStart_toStartOf="parent" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/collapsed">
+        <Constraint
+            android:id="@id/poster"
+            android:layout_height="?attr/actionBarSize"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            motion:layout_constraintTop_toTopOf="parent" />
+        <Constraint
+            android:id="@id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleX="0.75"
+            android:scaleY="0.75"
+            motion:layout_constraintBottom_toBottomOf="@id/home"
+            motion:layout_constraintStart_toEndOf="@+id/home"
+            motion:layout_constraintTop_toTopOf="@id/home" />
+    </ConstraintSet>
+
+</MotionScene>
