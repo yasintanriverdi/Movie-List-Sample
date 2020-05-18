@@ -3,6 +3,7 @@ plugins {
     id(Plugins.androidLibrary)
     kotlin(Plugins.kotlinAndroid)
     kotlin(Plugins.kotlinKapt)
+    id(Plugins.safeArgs)
 }
 
 android {
@@ -15,6 +16,7 @@ dependencies {
 
     implementation(project(":core"))
     implementation(project(":lib:commons"))
+    implementation(project(":lib:navigation"))
 
     implementation(Dependencies.Kotlin.stdlib)
 
@@ -25,6 +27,8 @@ dependencies {
     implementation(Dependencies.AndroidX.Lifecycle.extensions)
     implementation(Dependencies.AndroidX.Lifecycle.viewmodelKtx)
     implementation(Dependencies.AndroidX.recyclerView)
+    implementation(Dependencies.AndroidX.Navigation.fragment)
+    implementation(Dependencies.AndroidX.Navigation.ui)
 
     implementation(Dependencies.Google.material)
 

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
 import com.yasintanriverdi.commons.extensions.appContext
@@ -15,6 +16,7 @@ import com.yasintanriverdi.commons.ui.GridViewItemDecoration
 import com.yasintanriverdi.core.data.DataState
 import com.yasintanriverdi.core.data.entities.Movie
 import com.yasintanriverdi.core.di.provider.CoreComponentProvider
+import com.yasintanriverdi.moviedetail.MovieDetailFragmentArgs
 import com.yasintanriverdi.movies.R
 import com.yasintanriverdi.movies.databinding.FragmentMoviesBinding
 import movielistsample.movies.adapter.MoviesAdapter
@@ -51,6 +53,7 @@ class MoviesFragment : Fragment() {
         setupRecyclerView()
         observe(viewModel.state, ::onViewStateChanged)
         observe(viewModel.data, ::onViewDataChanged)
+        observe(viewModel.event, ::onViewEvent)
     }
 
     private fun setupRecyclerView() {
@@ -61,7 +64,7 @@ class MoviesFragment : Fragment() {
                 spacing = resources.getDimensionPixelOffset(R.dimen.movie_item_spacing)
             )
         )
-        adapter = MoviesAdapter()
+        adapter = MoviesAdapter(viewModel)
         binding.moviesList.adapter = adapter
     }
 
@@ -71,13 +74,23 @@ class MoviesFragment : Fragment() {
             is DataState.Error -> {
                 showSnackbar(dataState.message)
             }
-            else -> { // do nothing }
+            else -> {
+                // do nothing
             }
         }
     }
 
     private fun onViewDataChanged(movies: PagedList<Movie>) {
         adapter.submitList(movies)
+    }
+
+    private fun onViewEvent(viewEvent: MoviesEvent) {
+        when (viewEvent) {
+            is MoviesEvent.OpenMovieDetail -> {
+                val args = MovieDetailFragmentArgs(movieId = viewEvent.movieId).toBundle()
+                findNavController().navigate(R.id.action_moviesFragment_to_movieDetailFragment, args)
+            }
+        }
     }
 
     private fun setupDependencyInjection() {

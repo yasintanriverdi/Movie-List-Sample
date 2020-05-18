@@ -1,6 +1,7 @@
 import com.android.build.gradle.BaseExtension
 import com.android.build.gradle.AppPlugin
 import com.android.build.gradle.LibraryPlugin
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id(Plugins.spotless) version Versions.spotless
@@ -15,6 +16,7 @@ buildscript {
     dependencies {
         classpath(Classpaths.gradle)
         classpath(Classpaths.kotlinGradle)
+        classpath(Classpaths.safeArgs)
     }
 }
 
@@ -52,6 +54,13 @@ subprojects {
             target("**/.gitignore", "**/*.gradle", "**/*.md", "**/*.sh", "**/*.yml")
             trimTrailingWhitespace()
             endWithNewline()
+        }
+    }
+
+    project.tasks.withType(KotlinCompile::class.java) {
+        kotlinOptions {
+            freeCompilerArgs = listOf("-Xjsr305=strict", "-progressive")
+            jvmTarget = "1.8"
         }
     }
 

@@ -2,6 +2,7 @@ include(
     ":app",
     "core",
     "lib:commons",
+    "lib:navigation",
     ":feature:movies",
     ":feature:moviedetail"
 )

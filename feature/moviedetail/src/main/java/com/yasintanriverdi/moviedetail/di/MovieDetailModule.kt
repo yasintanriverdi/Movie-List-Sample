@@ -18,5 +18,4 @@ class MovieDetailModule(private val movieDetailFragment: MovieDetailFragment) {
     ) = movieDetailFragment.viewModel {
         MovieDetailViewModel(fetchMovieUseCase)
     }
-
 }

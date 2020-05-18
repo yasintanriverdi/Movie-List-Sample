@@ -15,6 +15,7 @@ dependencies {
 
     implementation(project(":core"))
     implementation(project(":lib:commons"))
+    implementation(project(":lib:navigation"))
 
     implementation(Dependencies.Kotlin.stdlib)
 
@@ -24,6 +25,8 @@ dependencies {
     implementation(Dependencies.AndroidX.Fragment.fragmentKtx)
     implementation(Dependencies.AndroidX.Lifecycle.extensions)
     implementation(Dependencies.AndroidX.Lifecycle.viewmodelKtx)
+    implementation(Dependencies.AndroidX.Navigation.fragment)
+    implementation(Dependencies.AndroidX.Navigation.ui)
     implementation(Dependencies.AndroidX.recyclerView)
     implementation(Dependencies.AndroidX.Paging.core)
 

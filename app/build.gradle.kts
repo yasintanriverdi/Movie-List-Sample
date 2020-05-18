@@ -41,6 +41,8 @@ android {
 dependencies {
 
     implementation(project(":core"))
+    implementation(project(":lib:commons"))
+    implementation(project(":lib:navigation"))
     implementation(project(":feature:movies"))
     implementation(project(":feature:moviedetail"))
 

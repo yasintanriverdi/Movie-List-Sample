@@ -7,8 +7,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.yasintanriverdi.core.data.entities.Movie
 import com.yasintanriverdi.movies.databinding.ItemMovieBinding
+import movielistsample.movies.MoviesViewModel
 
-class MoviesAdapter : PagedListAdapter<Movie, MoviesAdapter.MovieItemViewHolder>(DIFF_CALLBACK) {
+class MoviesAdapter(
+    private val moviesViewModel: MoviesViewModel
+) : PagedListAdapter<Movie, MoviesAdapter.MovieItemViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieItemViewHolder {
         val binding = ItemMovieBinding.inflate(LayoutInflater.from(parent.context))
@@ -27,6 +30,7 @@ class MoviesAdapter : PagedListAdapter<Movie, MoviesAdapter.MovieItemViewHolder>
         fun bind(movieItem: Movie) {
             with(binding) {
                 movie = movieItem
+                viewModel = moviesViewModel
                 executePendingBindings()
             }
         }

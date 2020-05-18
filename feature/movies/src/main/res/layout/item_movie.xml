@@ -8,6 +8,10 @@
             name="movie"
             type="com.yasintanriverdi.core.data.entities.Movie" />
 
+        <variable
+            name="viewModel"
+            type="movielistsample.movies.MoviesViewModel" />
+
     </data>
 
     <com.google.android.material.card.MaterialCardView
@@ -16,6 +20,7 @@
         android:clickable="true"
         android:focusable="true"
         android:foreground="?selectableItemBackground"
+        android:onClick="@{() -> viewModel.openMovieDetail(movie.id)}"
         app:cardCornerRadius="@dimen/movie_item_card_radius"
         app:cardElevation="@dimen/movie_item_card_elevation">
 

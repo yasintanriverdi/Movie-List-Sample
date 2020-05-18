@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation_nav_graph"
+    app:startDestination="@id/moviesFragment">
+
+    <fragment
+        android:id="@+id/moviesFragment"
+        android:name="movielistsample.movies.MoviesFragment"
+        android:label="MoviesFragment">
+        <action
+            android:id="@+id/action_moviesFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.yasintanriverdi.moviedetail.MovieDetailFragment"
+        android:label="MovieDetailFragment">
+
+        <argument
+            android:name="movie_id"
+            app:argType="integer" />
+
+    </fragment>
+
+</navigation>

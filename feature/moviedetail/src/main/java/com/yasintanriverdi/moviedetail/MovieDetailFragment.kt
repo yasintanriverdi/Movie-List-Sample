@@ -4,7 +4,12 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.yasintanriverdi.commons.extensions.*
+import androidx.navigation.fragment.navArgs
+import com.yasintanriverdi.commons.extensions.observe
+import com.yasintanriverdi.commons.extensions.hide
+import com.yasintanriverdi.commons.extensions.show
+import com.yasintanriverdi.commons.extensions.showSnackbar
+import com.yasintanriverdi.commons.extensions.appContext
 import com.yasintanriverdi.core.data.DataState
 import com.yasintanriverdi.core.data.entities.Movie
 import com.yasintanriverdi.core.di.provider.CoreComponentProvider
@@ -18,8 +23,9 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     @Inject
     lateinit var viewModel: MovieDetailViewModel
 
-    private var _binding: FragmentMovieDetailBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentMovieDetailBinding
+
+    private val args: MovieDetailFragmentArgs by navArgs()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -28,9 +34,10 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentMovieDetailBinding.bind(view)
+        binding = FragmentMovieDetailBinding.bind(view)
         observe(viewModel.state, ::onViewStateChanged)
         observe(viewModel.data, ::onViewDataChanged)
+        viewModel.fetchMovie(args.movieId)
     }
 
     private fun onViewStateChanged(viewState: MovieDetailViewState) {
@@ -46,13 +53,8 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
         }
     }
 
-    private fun onViewDataChanged(movies: Movie) {
+    private fun onViewDataChanged(movie: Movie) {
         // TODO - update UI
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
     private fun setupDependencyInjection() {

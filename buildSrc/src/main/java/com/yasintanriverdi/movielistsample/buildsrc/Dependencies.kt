@@ -23,8 +23,6 @@ object Dependencies {
             const val fragment =
                 "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
             const val ui = "androidx.navigation:navigation-ui-ktx:${Versions.navigation}"
-            const val safeArgs =
-                "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
         }
 
         object Fragment {

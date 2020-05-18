@@ -22,8 +22,7 @@ class MovieDetailViewModel @Inject constructor(
     val state: LiveData<MovieDetailViewState>
         get() = _state
 
-    fun fetchMovie() {
-        val movieId = 1
+    fun fetchMovie(movieId: Int) {
         _state.postValue(MovieDetailViewState(dataState = DataState.Loading))
         viewModelScope.launch {
             val movie = fetchMovieUseCase.getMovieById(movieId)
@@ -33,11 +32,10 @@ class MovieDetailViewModel @Inject constructor(
             } else {
                 _state.postValue(
                     MovieDetailViewState(
-                        dataState = DataState.Error("Error occured during fetching the movie")
+                        dataState = DataState.Error("Error occurred during fetching the movie")
                     )
                 )
             }
         }
     }
-
 }

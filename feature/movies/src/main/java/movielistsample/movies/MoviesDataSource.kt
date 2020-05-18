@@ -18,7 +18,7 @@ class MoviesDataSource @Inject constructor(
 ) : PageKeyedDataSource<Int, Movie>() {
 
     val dataState = MutableLiveData<DataState>()
-    var retry: (() -> Unit)? = null
+    private var retry: (() -> Unit)? = null
 
     override fun loadInitial(
         params: LoadInitialParams<Int>,
