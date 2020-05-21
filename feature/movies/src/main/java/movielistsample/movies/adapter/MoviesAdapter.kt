@@ -6,7 +6,7 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.yasintanriverdi.core.data.entities.Movie
-import com.yasintanriverdi.movies.databinding.ItemMovieBinding
+import com.yasintanriverdi.movies.databinding.MoviesItemMovieBinding
 import movielistsample.movies.MoviesViewModel
 
 class MoviesAdapter(
@@ -14,7 +14,7 @@ class MoviesAdapter(
 ) : PagedListAdapter<Movie, MoviesAdapter.MovieItemViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieItemViewHolder {
-        val binding = ItemMovieBinding.inflate(LayoutInflater.from(parent.context))
+        val binding = MoviesItemMovieBinding.inflate(LayoutInflater.from(parent.context))
         return MovieItemViewHolder(binding)
     }
 
@@ -24,7 +24,7 @@ class MoviesAdapter(
         }
     }
 
-    inner class MovieItemViewHolder(private val binding: ItemMovieBinding) :
+    inner class MovieItemViewHolder(private val binding: MoviesItemMovieBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(movieItem: Movie) {

@@ -17,7 +17,7 @@ import com.yasintanriverdi.core.data.DataState
 import com.yasintanriverdi.core.data.entities.Movie
 import com.yasintanriverdi.core.di.provider.CoreComponentProvider
 import com.yasintanriverdi.movies.R
-import com.yasintanriverdi.movies.databinding.FragmentMoviesBinding
+import com.yasintanriverdi.movies.databinding.MoviesFragmentMoviesBinding
 import movielistsample.movies.adapter.MoviesAdapter
 import movielistsample.movies.di.DaggerMoviesComponent
 import movielistsample.movies.di.MoviesModule
@@ -28,7 +28,7 @@ class MoviesFragment : Fragment() {
     @Inject
     lateinit var viewModel: MoviesViewModel
 
-    private lateinit var binding: FragmentMoviesBinding
+    private lateinit var binding: MoviesFragmentMoviesBinding
 
     private lateinit var adapter: MoviesAdapter
 
@@ -37,7 +37,7 @@ class MoviesFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMoviesBinding.inflate(inflater)
+        binding = MoviesFragmentMoviesBinding.inflate(inflater)
         binding.lifecycleOwner = viewLifecycleOwner
         return binding.root
     }
