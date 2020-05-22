@@ -16,7 +16,7 @@ object Versions {
 
     // AndroidX
     const val appCompat = "1.1.0"
-    const val recyclerView = "1.1.0"
+    const val recyclerView = "1.2.0-alpha03"
     const val navigation = "2.2.2"
     const val fragment = "1.2.4"
     const val test = "1.2.0"

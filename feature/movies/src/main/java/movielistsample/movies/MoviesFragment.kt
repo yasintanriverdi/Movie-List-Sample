@@ -30,7 +30,7 @@ class MoviesFragment : Fragment() {
 
     private lateinit var binding: MoviesFragmentMoviesBinding
 
-    private lateinit var adapter: MoviesAdapter
+    private lateinit var moviesAdapter: MoviesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -56,15 +56,16 @@ class MoviesFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        binding.moviesList.layoutManager = GridLayoutManager(requireContext(), 2)
-        binding.moviesList.addItemDecoration(
-            GridViewItemDecoration(
-                spanCount = resources.getInteger(R.integer.movie_list_span_count),
-                spacing = resources.getDimensionPixelOffset(R.dimen.movie_item_spacing)
+        moviesAdapter = MoviesAdapter(viewModel)
+        with(binding.moviesList) {
+            layoutManager = GridLayoutManager(requireContext(), 2)
+            addItemDecoration(GridViewItemDecoration(
+                    spanCount = resources.getInteger(R.integer.movie_list_span_count),
+                    spacing = resources.getDimensionPixelOffset(R.dimen.movie_item_spacing)
+                )
             )
-        )
-        adapter = MoviesAdapter(viewModel)
-        binding.moviesList.adapter = adapter
+            adapter = moviesAdapter
+        }
     }
 
     private fun onViewStateChanged(viewState: MoviesViewState) {
@@ -80,7 +81,7 @@ class MoviesFragment : Fragment() {
     }
 
     private fun onViewDataChanged(movies: PagedList<Movie>) {
-        adapter.submitList(movies)
+        moviesAdapter.submitList(movies)
     }
 
     private fun onViewEvent(viewEvent: MoviesEvent) {
