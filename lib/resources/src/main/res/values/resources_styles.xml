@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.Movies.Toolbar" parent="@style/Widget.MaterialComponents.Toolbar.Surface">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:elevation">@dimen/resources_elevation_toolbar</item>
+        <item name="titleTextColor">@color/color_on_background</item>
+        <item name="android:theme">@style/ThemeOverlay.Movies.Toolbar</item>
+    </style>
+
+    <style name="ThemeOverlay.Movies.Toolbar" parent="">
+        <item name="colorControlNormal">@color/color_on_background</item>
+        <item name="actionMenuTextColor">@color/color_on_background</item>
+    </style>
+
+
+</resources>

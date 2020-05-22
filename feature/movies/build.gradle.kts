@@ -16,6 +16,7 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":lib:commons"))
     implementation(project(":lib:navigation"))
+    implementation(project(":lib:resources"))
 
     implementation(Dependencies.Kotlin.stdlib)
 

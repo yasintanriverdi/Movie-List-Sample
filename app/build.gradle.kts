@@ -35,6 +35,7 @@ android {
 
     buildFeatures {
         dataBinding = true
+        viewBinding = true
     }
 }
 
@@ -43,6 +44,7 @@ dependencies {
     implementation(project(":core"))
     implementation(project(":lib:commons"))
     implementation(project(":lib:navigation"))
+    implementation(project(":lib:resources"))
     implementation(project(":feature:movies"))
     implementation(project(":feature:moviedetail"))
 

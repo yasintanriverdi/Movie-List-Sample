@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">#BB86FC</color>
+    <color name="color_primary_variant">#6200EE</color>
+    <color name="color_on_primary">#FFFFFF</color>
+
+    <color name="color_secondary">#03DAC6</color>
+    <color name="color_secondary_variant">#018786</color>
+    <color name="color_on_secondary">#FFFFFF</color>
+
+    <color name="color_background">#FFFFFF</color>
+    <color name="color_on_background">#4E505B</color>
+
+    <color name="color_error">#FD567E</color>
+    <color name="color_on_error">#FFFFFF</color>
+</resources>

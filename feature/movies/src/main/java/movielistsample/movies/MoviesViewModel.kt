@@ -33,7 +33,7 @@ class MoviesViewModel @Inject constructor(
     val event: LiveData<MoviesEvent>
         get() = _event
 
-    fun openMovieDetail(movieId: Int) {
-        _event.value = MoviesEvent.OpenMovieDetail(movieId)
+    fun openMovieDetail(movieId: Int, movieTitle: String) {
+        _event.value = MoviesEvent.OpenMovieDetail(movieId, movieTitle)
     }
 }

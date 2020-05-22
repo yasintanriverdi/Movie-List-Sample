@@ -87,7 +87,8 @@ class MoviesFragment : Fragment() {
         when (viewEvent) {
             is MoviesEvent.OpenMovieDetail -> {
                 findNavController().navigate(
-                    MoviesFragmentDirections.actionMoviesFragmentToMovieDetailFragment(viewEvent.movieId)
+                    MoviesFragmentDirections.actionMoviesFragmentToMovieDetailFragment(
+                        viewEvent.movieId, viewEvent.movieTitle)
                 )
             }
         }

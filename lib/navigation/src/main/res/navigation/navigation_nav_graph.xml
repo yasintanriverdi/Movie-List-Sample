@@ -7,24 +7,28 @@
     <fragment
         android:id="@+id/moviesFragment"
         android:name="movielistsample.movies.MoviesFragment"
-        android:label="MoviesFragment">
+        android:label="@string/resources_app_name">
         <action
             android:id="@+id/action_moviesFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            app:enterAnim="@animator/slide_in_left"
+            app:exitAnim="@animator/slide_out_right"
+            app:popEnterAnim="@animator/slide_in_right"
+            app:popExitAnim="@animator/slide_out_left" />
     </fragment>
 
     <fragment
         android:id="@+id/movieDetailFragment"
         android:name="com.yasintanriverdi.moviedetail.MovieDetailFragment"
-        android:label="MovieDetailFragment">
+        android:label="{movie_name}">
 
         <argument
             android:name="movie_id"
             app:argType="integer" />
+
+        <argument
+            android:name="movie_name"
+            app:argType="string" />
 
     </fragment>
 

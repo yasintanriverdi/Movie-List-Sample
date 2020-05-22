@@ -3,6 +3,7 @@ include(
     "core",
     "lib:commons",
     "lib:navigation",
+    ":lib:resources",
     ":feature:movies",
     ":feature:moviedetail"
 )

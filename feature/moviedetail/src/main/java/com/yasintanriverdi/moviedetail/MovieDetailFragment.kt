@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.yasintanriverdi.commons.extensions.observe
 import com.yasintanriverdi.commons.extensions.hide
@@ -38,18 +37,10 @@ class MovieDetailFragment : Fragment(R.layout.moviedetail_fragment_detail) {
         super.onViewCreated(view, savedInstanceState)
         binding = MoviedetailFragmentDetailBinding.bind(view)
 
-        setupListeners()
-
         observe(viewModel.state, ::onViewStateChanged)
         observe(viewModel.data, ::onViewDataChanged)
 
         viewModel.fetchMovie(args.movieId)
-    }
-
-    private fun setupListeners() {
-        binding.home.setOnClickListener {
-            findNavController().navigateUp()
-        }
     }
 
     private fun onViewStateChanged(viewState: MovieDetailViewState) {
