@@ -17,17 +17,19 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        binding.toolbar.setupWithNavController(findNavController(R.id.nav_host_fragment))
 
-        binding.toolbar.setOnMenuItemClickListener {
-            val nightMode =
-                if (isDarkTheme()) {
-                    AppCompatDelegate.MODE_NIGHT_NO
-                } else {
-                    AppCompatDelegate.MODE_NIGHT_YES
-                }
-            AppCompatDelegate.setDefaultNightMode(nightMode)
-            true
+        with(binding.toolbar) {
+            setupWithNavController(findNavController(R.id.nav_host_fragment))
+            setOnMenuItemClickListener {
+                val nightMode =
+                    if (isDarkTheme()) {
+                        AppCompatDelegate.MODE_NIGHT_NO
+                    } else {
+                        AppCompatDelegate.MODE_NIGHT_YES
+                    }
+                AppCompatDelegate.setDefaultNightMode(nightMode)
+                true
+            }
         }
     }
 }
