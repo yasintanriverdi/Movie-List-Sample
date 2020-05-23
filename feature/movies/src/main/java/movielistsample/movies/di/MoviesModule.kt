@@ -4,13 +4,13 @@ import androidx.lifecycle.viewModelScope
 import com.yasintanriverdi.commons.extensions.viewModel
 import com.yasintanriverdi.core.data.AppCoroutineDispatchers
 import com.yasintanriverdi.core.di.scopes.FeatureScope
+import com.yasintanriverdi.core.repositories.MovieRepository
 import dagger.Module
 import dagger.Provides
 import movielistsample.movies.MoviesPageDataSource
 import movielistsample.movies.MoviesPageDataSourceFactory
 import movielistsample.movies.MoviesFragment
 import movielistsample.movies.MoviesViewModel
-import movielistsample.movies.usecases.FetchMoviesUseCase
 
 @Module
 class MoviesModule(
@@ -27,8 +27,8 @@ class MoviesModule(
 
     @Provides
     fun provideMovieDataSource(
-        fetchMoviesUseCase: FetchMoviesUseCase,
+        moviesRepository: MovieRepository,
         appCoroutineDispatchers: AppCoroutineDispatchers,
         viewModel: MoviesViewModel
-    ) = MoviesPageDataSource(fetchMoviesUseCase, viewModel.viewModelScope, appCoroutineDispatchers.io)
+    ) = MoviesPageDataSource(moviesRepository, viewModel.viewModelScope, appCoroutineDispatchers.io)
 }

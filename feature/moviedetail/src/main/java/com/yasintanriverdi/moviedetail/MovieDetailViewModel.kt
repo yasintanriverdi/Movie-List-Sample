@@ -6,12 +6,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.yasintanriverdi.core.data.DataState
 import com.yasintanriverdi.core.data.entities.Movie
-import com.yasintanriverdi.moviedetail.usecases.FetchMovieUseCase
+import com.yasintanriverdi.core.repositories.MovieRepository
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class MovieDetailViewModel @Inject constructor(
-    private val fetchMovieUseCase: FetchMovieUseCase
+    private val movieRepository: MovieRepository
 ) : ViewModel() {
 
     private val _data = MutableLiveData<Movie>()
@@ -25,7 +25,7 @@ class MovieDetailViewModel @Inject constructor(
     fun fetchMovie(movieId: Int) {
         _state.postValue(MovieDetailViewState(dataState = DataState.Loading))
         viewModelScope.launch {
-            val movie = fetchMovieUseCase.getMovieById(movieId)
+            val movie = movieRepository.getMovieById(movieId)
             if (movie != null) {
                 _state.postValue(MovieDetailViewState(dataState = DataState.Success()))
                 _data.postValue(movie)

@@ -5,14 +5,14 @@ import androidx.paging.PageKeyedDataSource
 import com.yasintanriverdi.core.data.DataState
 import com.yasintanriverdi.core.data.Result
 import com.yasintanriverdi.core.data.entities.Movie
+import com.yasintanriverdi.core.repositories.MovieRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import movielistsample.movies.usecases.FetchMoviesUseCase
 import javax.inject.Inject
 
 class MoviesPageDataSource @Inject constructor(
-    private val fetchMoviesUseCase: FetchMoviesUseCase,
+    private val moviesRepository: MovieRepository,
     private val scope: CoroutineScope,
     private val dispatcher: CoroutineDispatcher
 ) : PageKeyedDataSource<Int, Movie>() {
@@ -26,7 +26,7 @@ class MoviesPageDataSource @Inject constructor(
     ) {
         dataState.postValue(DataState.Loading)
         scope.launch(dispatcher) {
-            when (val response = fetchMoviesUseCase.fetchMovies(1)) {
+            when (val response = moviesRepository.fetchMovies(1)) {
                 is Result.Success -> {
                     val movies = response.data
                     callback.onResult(movies, null, 2)
@@ -45,7 +45,7 @@ class MoviesPageDataSource @Inject constructor(
         val page = params.key
         dataState.postValue(DataState.Loading)
         scope.launch(dispatcher) {
-            when (val response = fetchMoviesUseCase.fetchMovies(page)) {
+            when (val response = moviesRepository.fetchMovies(page)) {
                 is Result.Success -> {
                     val movies = response.data
                     callback.onResult(movies, page + 1)
