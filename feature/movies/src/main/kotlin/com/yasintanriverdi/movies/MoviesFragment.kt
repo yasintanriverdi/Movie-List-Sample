@@ -2,9 +2,7 @@ package com.yasintanriverdi.movies
 
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
@@ -24,7 +22,7 @@ import com.yasintanriverdi.movies.di.DaggerMoviesComponent
 import com.yasintanriverdi.movies.di.MoviesModule
 import javax.inject.Inject
 
-class MoviesFragment : Fragment() {
+class MoviesFragment : Fragment(R.layout.movies_fragment_movies) {
 
     @Inject
     lateinit var viewModel: MoviesViewModel
@@ -34,16 +32,6 @@ class MoviesFragment : Fragment() {
     private lateinit var moviesAdapter: MoviesAdapter
     private lateinit var statusFooterAdapter: StatusFooterAdapter
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = MoviesFragmentMoviesBinding.inflate(inflater)
-        binding.lifecycleOwner = viewLifecycleOwner
-        return binding.root
-    }
-
     override fun onAttach(context: Context) {
         super.onAttach(context)
         setupDependencyInjection()
@@ -51,6 +39,7 @@ class MoviesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding = MoviesFragmentMoviesBinding.bind(view)
         setupRecyclerView()
         observe(viewModel.state, ::onViewStateChanged)
         observe(viewModel.data, ::onViewDataChanged)
