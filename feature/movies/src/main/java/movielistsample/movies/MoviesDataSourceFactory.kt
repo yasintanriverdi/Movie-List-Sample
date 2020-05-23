@@ -17,4 +17,8 @@ class MoviesDataSourceFactory @Inject constructor(
         sourceLiveData.postValue(movieDataSource)
         return movieDataSource
     }
+
+    fun retry() {
+        sourceLiveData.value?.retry()
+    }
 }

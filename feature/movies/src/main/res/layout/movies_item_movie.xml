@@ -21,8 +21,8 @@
         android:focusable="true"
         android:foreground="?selectableItemBackground"
         android:onClick="@{() -> viewModel.openMovieDetail(movie.id, movie.title)}"
-        app:cardCornerRadius="@dimen/movie_item_card_radius"
-        app:cardElevation="@dimen/movie_item_card_elevation">
+        app:cardCornerRadius="@dimen/movies_movie_item_card_radius"
+        app:cardElevation="@dimen/movies_movie_item_card_elevation">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -31,7 +31,7 @@
             <ImageView
                 android:id="@+id/poster"
                 android:layout_width="0dp"
-                android:layout_height="@dimen/movie_item_poster_height"
+                android:layout_height="@dimen/movies_movie_item_poster_height"
                 app:imageUrl="@{movie.posterUrl}"
                 app:layout_constraintBottom_toTopOf="@+id/title"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
                 android:id="@+id/title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/movie_item_title_margin"
+                android:layout_marginStart="@dimen/movies_movie_item_title_margin"
                 android:ellipsize="end"
                 android:gravity="start|center_vertical"
                 android:lines="2"

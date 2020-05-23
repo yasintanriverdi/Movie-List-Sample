@@ -10,7 +10,7 @@ import com.yasintanriverdi.core.data.entities.Movie
 import javax.inject.Inject
 
 class MoviesViewModel @Inject constructor(
-    dataSourceFactory: MoviesDataSourceFactory
+    private val dataSourceFactory: MoviesDataSourceFactory
 ) : ViewModel() {
 
     private val pagedListConfig =
@@ -35,5 +35,9 @@ class MoviesViewModel @Inject constructor(
 
     fun openMovieDetail(movieId: Int, movieTitle: String) {
         _event.value = MoviesEvent.OpenMovieDetail(movieId, movieTitle)
+    }
+
+    fun retry() {
+        dataSourceFactory.retry()
     }
 }

@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.paging.PagedList
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.MergeAdapter
 import com.yasintanriverdi.commons.extensions.appContext
 import com.yasintanriverdi.commons.extensions.observe
 import com.yasintanriverdi.commons.extensions.showSnackbar
@@ -18,6 +19,7 @@ import com.yasintanriverdi.core.data.entities.Movie
 import com.yasintanriverdi.core.di.provider.CoreComponentProvider
 import com.yasintanriverdi.movies.R
 import com.yasintanriverdi.movies.databinding.MoviesFragmentMoviesBinding
+import movielistsample.movies.adapter.StatusFooterAdapter
 import movielistsample.movies.adapter.MoviesAdapter
 import movielistsample.movies.di.DaggerMoviesComponent
 import movielistsample.movies.di.MoviesModule
@@ -31,6 +33,7 @@ class MoviesFragment : Fragment() {
     private lateinit var binding: MoviesFragmentMoviesBinding
 
     private lateinit var moviesAdapter: MoviesAdapter
+    private lateinit var statusFooterAdapter: StatusFooterAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,19 +60,21 @@ class MoviesFragment : Fragment() {
 
     private fun setupRecyclerView() {
         moviesAdapter = MoviesAdapter(viewModel)
+        statusFooterAdapter = StatusFooterAdapter(viewModel)
         with(binding.moviesList) {
             layoutManager = GridLayoutManager(requireContext(), 2)
-            addItemDecoration(GridViewItemDecoration(
-                    spanCount = resources.getInteger(R.integer.movie_list_span_count),
-                    spacing = resources.getDimensionPixelOffset(R.dimen.movie_item_spacing)
+            addItemDecoration(
+                GridViewItemDecoration(
+                    spanCount = resources.getInteger(R.integer.movies_movie_list_span_count),
+                    spacing = resources.getDimensionPixelOffset(R.dimen.movies_movie_item_spacing)
                 )
             )
-            adapter = moviesAdapter
+            adapter = MergeAdapter(moviesAdapter, statusFooterAdapter)
         }
     }
 
     private fun onViewStateChanged(viewState: MoviesViewState) {
-        binding.viewState = viewState
+        statusFooterAdapter.viewState = viewState
         when (val dataState = viewState.dataState) {
             is DataState.Error -> {
                 showSnackbar(dataState.message)
@@ -89,7 +94,8 @@ class MoviesFragment : Fragment() {
             is MoviesEvent.OpenMovieDetail -> {
                 findNavController().navigate(
                     MoviesFragmentDirections.actionMoviesFragmentToMovieDetailFragment(
-                        viewEvent.movieId, viewEvent.movieTitle)
+                        viewEvent.movieId, viewEvent.movieTitle
+                    )
                 )
             }
         }

@@ -63,4 +63,8 @@ class MoviesDataSource @Inject constructor(
     }
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) = Unit
+
+    fun retry() {
+        retry?.invoke()
+    }
 }

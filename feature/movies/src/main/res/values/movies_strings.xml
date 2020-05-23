@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <integer name="movies_movie_list_span_count">2</integer>
+    <string name="movies_status_footer_retry">Retry</string>
 
 </resources>
