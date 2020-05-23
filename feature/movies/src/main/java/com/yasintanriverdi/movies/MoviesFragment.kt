@@ -1,4 +1,4 @@
-package movielistsample.movies
+package com.yasintanriverdi.movies
 
 import android.content.Context
 import android.os.Bundle
@@ -17,12 +17,11 @@ import com.yasintanriverdi.commons.ui.GridViewItemDecoration
 import com.yasintanriverdi.core.data.DataState
 import com.yasintanriverdi.core.data.entities.Movie
 import com.yasintanriverdi.core.di.provider.CoreComponentProvider
-import com.yasintanriverdi.movies.R
+import com.yasintanriverdi.movies.adapter.MoviesAdapter
+import com.yasintanriverdi.movies.adapter.StatusFooterAdapter
 import com.yasintanriverdi.movies.databinding.MoviesFragmentMoviesBinding
-import movielistsample.movies.adapter.StatusFooterAdapter
-import movielistsample.movies.adapter.MoviesAdapter
-import movielistsample.movies.di.DaggerMoviesComponent
-import movielistsample.movies.di.MoviesModule
+import com.yasintanriverdi.movies.di.DaggerMoviesComponent
+import com.yasintanriverdi.movies.di.MoviesModule
 import javax.inject.Inject
 
 class MoviesFragment : Fragment() {

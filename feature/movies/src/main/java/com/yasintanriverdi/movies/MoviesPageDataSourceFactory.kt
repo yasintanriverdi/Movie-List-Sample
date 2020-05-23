@@ -1,4 +1,4 @@
-package movielistsample.movies
+package com.yasintanriverdi.movies
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource

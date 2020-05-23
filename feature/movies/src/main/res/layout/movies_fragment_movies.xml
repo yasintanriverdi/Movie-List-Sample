@@ -6,7 +6,7 @@
 
         <variable
             name="viewState"
-            type="movielistsample.movies.MoviesViewState" />
+            type="com.yasintanriverdi.movies.MoviesViewState" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

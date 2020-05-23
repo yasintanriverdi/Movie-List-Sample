@@ -1,4 +1,4 @@
-package movielistsample.movies
+package com.yasintanriverdi.movies
 
 import com.yasintanriverdi.core.data.DataState
 

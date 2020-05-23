@@ -1,9 +1,9 @@
-package movielistsample.movies.di
+package com.yasintanriverdi.movies.di
 
 import com.yasintanriverdi.core.di.CoreComponent
 import com.yasintanriverdi.core.di.scopes.FeatureScope
 import dagger.Component
-import movielistsample.movies.MoviesFragment
+import com.yasintanriverdi.movies.MoviesFragment
 
 @FeatureScope
 @Component(

@@ -1,4 +1,4 @@
-package movielistsample.movies
+package com.yasintanriverdi.movies
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations

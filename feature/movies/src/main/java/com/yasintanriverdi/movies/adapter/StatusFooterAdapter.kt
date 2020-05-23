@@ -1,11 +1,11 @@
-package movielistsample.movies.adapter
+package com.yasintanriverdi.movies.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.yasintanriverdi.movies.databinding.MoviesItemLoadStatusBinding
-import movielistsample.movies.MoviesViewModel
-import movielistsample.movies.MoviesViewState
+import com.yasintanriverdi.movies.MoviesViewModel
+import com.yasintanriverdi.movies.MoviesViewState
 
 class StatusFooterAdapter(private val moviesViewModel: MoviesViewModel) :
     RecyclerView.Adapter<StatusFooterAdapter.StatusFooterViewHolder>() {

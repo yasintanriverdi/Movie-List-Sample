@@ -6,11 +6,11 @@
 
         <variable
             name="viewState"
-            type="movielistsample.movies.MoviesViewState" />
+            type="com.yasintanriverdi.movies.MoviesViewState" />
 
         <variable
             name="viewModel"
-            type="movielistsample.movies.MoviesViewModel" />
+            type="com.yasintanriverdi.movies.MoviesViewModel" />
 
     </data>
 

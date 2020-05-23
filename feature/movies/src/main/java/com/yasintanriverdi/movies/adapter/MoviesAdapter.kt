@@ -1,4 +1,4 @@
-package movielistsample.movies.adapter
+package com.yasintanriverdi.movies.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.yasintanriverdi.core.data.entities.Movie
 import com.yasintanriverdi.movies.databinding.MoviesItemMovieBinding
-import movielistsample.movies.MoviesViewModel
+import com.yasintanriverdi.movies.MoviesViewModel
 
 class MoviesAdapter(
     private val moviesViewModel: MoviesViewModel

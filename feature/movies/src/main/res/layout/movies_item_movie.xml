@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="movielistsample.movies.MoviesViewModel" />
+            type="com.yasintanriverdi.movies.MoviesViewModel" />
 
     </data>
 
