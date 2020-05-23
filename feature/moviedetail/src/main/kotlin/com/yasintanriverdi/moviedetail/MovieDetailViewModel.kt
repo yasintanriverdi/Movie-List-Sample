@@ -27,7 +27,7 @@ class MovieDetailViewModel @Inject constructor(
         viewModelScope.launch {
             val movie = movieRepository.getMovieById(movieId)
             if (movie != null) {
-                _state.postValue(MovieDetailViewState(dataState = DataState.Success()))
+                _state.postValue(MovieDetailViewState(dataState = DataState.Success))
                 _data.postValue(movie)
             } else {
                 _state.postValue(

@@ -45,14 +45,12 @@ class MovieDetailFragment : Fragment(R.layout.moviedetail_fragment_detail) {
 
     private fun onViewStateChanged(viewState: MovieDetailViewState) {
         when (val dataState = viewState.dataState) {
-            is DataState.Success -> {
-                binding.progress.hide()
-            }
+            DataState.Success -> binding.progress.hide()
+            DataState.Loading -> binding.progress.show()
             is DataState.Error -> {
                 binding.progress.hide()
                 showSnackbar(dataState.message)
             }
-            DataState.Loading -> binding.progress.show()
         }
     }
 

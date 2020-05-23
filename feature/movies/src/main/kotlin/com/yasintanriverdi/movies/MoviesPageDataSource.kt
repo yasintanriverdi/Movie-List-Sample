@@ -30,8 +30,7 @@ class MoviesPageDataSource @Inject constructor(
                 is Result.Success -> {
                     val movies = response.data
                     callback.onResult(movies, null, 2)
-                    val isEmpty = movies.isEmpty()
-                    dataState.postValue(DataState.Success(isEmpty = isEmpty, hasMore = false))
+                    dataState.postValue(DataState.Success)
                 }
                 is Result.Error -> {
                     retry = { loadInitial(params, callback) }
@@ -49,10 +48,7 @@ class MoviesPageDataSource @Inject constructor(
                 is Result.Success -> {
                     val movies = response.data
                     callback.onResult(movies, page + 1)
-                    val isEmpty = movies.isEmpty()
-                    dataState.postValue(
-                        DataState.Success(isEmpty = isEmpty, hasMore = isEmpty.not())
-                    )
+                    dataState.postValue(DataState.Success)
                 }
                 is Result.Error -> {
                     retry = { loadAfter(params, callback) }
