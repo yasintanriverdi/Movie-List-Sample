@@ -10,7 +10,7 @@ import com.yasintanriverdi.core.data.entities.Movie
 import javax.inject.Inject
 
 class MoviesViewModel @Inject constructor(
-    private val dataSourceFactory: MoviesDataSourceFactory
+    private val pageDataSourceFactory: MoviesPageDataSourceFactory
 ) : ViewModel() {
 
     private val pagedListConfig =
@@ -20,12 +20,12 @@ class MoviesViewModel @Inject constructor(
             .setPageSize(20)
             .build()
 
-    private val dataState = Transformations.switchMap(dataSourceFactory.sourceLiveData) {
+    private val dataState = Transformations.switchMap(pageDataSourceFactory.sourceLiveData) {
         it.dataState
     }
 
     internal val data: LiveData<PagedList<Movie>> =
-        LivePagedListBuilder(dataSourceFactory, pagedListConfig).build()
+        LivePagedListBuilder(pageDataSourceFactory, pagedListConfig).build()
 
     val state = Transformations.map(dataState) { MoviesViewState(dataState = it) }
 
@@ -38,6 +38,6 @@ class MoviesViewModel @Inject constructor(
     }
 
     fun retry() {
-        dataSourceFactory.retry()
+        pageDataSourceFactory.retry()
     }
 }

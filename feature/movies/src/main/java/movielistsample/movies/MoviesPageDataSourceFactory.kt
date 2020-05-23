@@ -6,14 +6,14 @@ import com.yasintanriverdi.core.data.entities.Movie
 import javax.inject.Inject
 import javax.inject.Provider
 
-class MoviesDataSourceFactory @Inject constructor(
-    private val movieDataSourceProvider: Provider<MoviesDataSource>
+class MoviesPageDataSourceFactory @Inject constructor(
+    private val moviePageDataSourceProvider: Provider<MoviesPageDataSource>
 ) : DataSource.Factory<Int, Movie>() {
 
-    val sourceLiveData = MutableLiveData<MoviesDataSource>()
+    val sourceLiveData = MutableLiveData<MoviesPageDataSource>()
 
     override fun create(): DataSource<Int, Movie> {
-        val movieDataSource = movieDataSourceProvider.get()
+        val movieDataSource = moviePageDataSourceProvider.get()
         sourceLiveData.postValue(movieDataSource)
         return movieDataSource
     }

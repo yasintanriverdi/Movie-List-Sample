@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 import movielistsample.movies.usecases.FetchMoviesUseCase
 import javax.inject.Inject
 
-class MoviesDataSource @Inject constructor(
+class MoviesPageDataSource @Inject constructor(
     private val fetchMoviesUseCase: FetchMoviesUseCase,
     private val scope: CoroutineScope,
     private val dispatcher: CoroutineDispatcher

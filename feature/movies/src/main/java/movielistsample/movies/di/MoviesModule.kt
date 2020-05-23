@@ -6,8 +6,8 @@ import com.yasintanriverdi.core.data.AppCoroutineDispatchers
 import com.yasintanriverdi.core.di.scopes.FeatureScope
 import dagger.Module
 import dagger.Provides
-import movielistsample.movies.MoviesDataSource
-import movielistsample.movies.MoviesDataSourceFactory
+import movielistsample.movies.MoviesPageDataSource
+import movielistsample.movies.MoviesPageDataSourceFactory
 import movielistsample.movies.MoviesFragment
 import movielistsample.movies.MoviesViewModel
 import movielistsample.movies.usecases.FetchMoviesUseCase
@@ -20,9 +20,9 @@ class MoviesModule(
     @Provides
     @FeatureScope
     fun provideViewModel(
-        dataSourceFactory: MoviesDataSourceFactory
+        pageDataSourceFactory: MoviesPageDataSourceFactory
     ) = moviesFragment.viewModel {
-        MoviesViewModel(dataSourceFactory)
+        MoviesViewModel(pageDataSourceFactory)
     }
 
     @Provides
@@ -30,5 +30,5 @@ class MoviesModule(
         fetchMoviesUseCase: FetchMoviesUseCase,
         appCoroutineDispatchers: AppCoroutineDispatchers,
         viewModel: MoviesViewModel
-    ) = MoviesDataSource(fetchMoviesUseCase, viewModel.viewModelScope, appCoroutineDispatchers.io)
+    ) = MoviesPageDataSource(fetchMoviesUseCase, viewModel.viewModelScope, appCoroutineDispatchers.io)
 }
