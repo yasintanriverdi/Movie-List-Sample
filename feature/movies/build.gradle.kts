@@ -46,7 +46,6 @@ dependencies {
     // Test
     testImplementation(project(":lib:testcommons"))
     testImplementation(Dependencies.Test.archCore)
-    testImplementation(Dependencies.Test.kotlin)
     testImplementation(Dependencies.Test.coroutines)
     testImplementation(Dependencies.Test.mockk)
 }

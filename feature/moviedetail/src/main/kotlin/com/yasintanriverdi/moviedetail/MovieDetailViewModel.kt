@@ -1,5 +1,7 @@
 package com.yasintanriverdi.moviedetail
 
+import androidx.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -32,10 +34,15 @@ class MovieDetailViewModel @Inject constructor(
             } else {
                 _state.postValue(
                     MovieDetailViewState(
-                        dataState = DataState.Error("Error occurred during fetching the movie")
+                        dataState = DataState.Error(ERROR_MESSAGE)
                     )
                 )
             }
         }
+    }
+
+    companion object {
+        @VisibleForTesting(otherwise = PRIVATE)
+        const val ERROR_MESSAGE = "Error occurred during fetching the movie"
     }
 }

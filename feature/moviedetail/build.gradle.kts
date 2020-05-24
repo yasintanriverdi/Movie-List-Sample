@@ -36,4 +36,10 @@ dependencies {
     // Dagger
     implementation(Dependencies.Dagger.dagger)
     kapt(Dependencies.Dagger.compiler)
+
+    // Test
+    testImplementation(project(":lib:testcommons"))
+    testImplementation(Dependencies.Test.archCore)
+    testImplementation(Dependencies.Test.coroutines)
+    testImplementation(Dependencies.Test.mockk)
 }

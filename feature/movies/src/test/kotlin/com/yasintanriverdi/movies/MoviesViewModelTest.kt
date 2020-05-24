@@ -4,7 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.yasintanriverdi.core.data.DataState
-import com.yasintanriverdi.testcommons.rules.CoroutineDispatcherRule
+import com.yasintanriverdi.testcommons.rules.CoroutineTestRule
 import io.mockk.MockKAnnotations
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
@@ -20,7 +20,7 @@ class MoviesViewModelTest {
 
     @ExperimentalCoroutinesApi
     @get:Rule
-    var coroutinesTestRule = CoroutineDispatcherRule()
+    var coroutinesTestRule = CoroutineTestRule()
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()

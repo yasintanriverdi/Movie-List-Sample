@@ -61,6 +61,7 @@ open class MoviesPageDataSource @Inject constructor(
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) = Unit
 
+    @VisibleForTesting(otherwise = PACKAGE_PRIVATE)
     fun retry() {
         retry?.invoke()
     }

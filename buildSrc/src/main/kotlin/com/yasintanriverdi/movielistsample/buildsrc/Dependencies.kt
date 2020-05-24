@@ -1,7 +1,6 @@
 object Dependencies {
     object Kotlin {
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
-        const val gradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
         const val extensions = "org.jetbrains.kotlin:kotlin-android-extensions:${Versions.kotlin}"
 
         object Coroutines {
@@ -84,10 +83,11 @@ object Dependencies {
 
         const val coroutines =
             "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
-        const val kotlin = "org.jetbrains.kotlin:kotlin-test:${Versions.kotlin}"
 
         const val mockk = "io.mockk:mockk:${Versions.mockk}"
 
         const val junit = "junit:junit:${Versions.junit}"
+
+        const val mockWebServer = "com.squareup.okhttp3:mockwebserver:${Versions.okHttp}"
     }
 }
