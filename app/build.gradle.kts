@@ -61,4 +61,6 @@ dependencies {
     kapt(Dependencies.Dagger.compiler)
 
     implementation(Dependencies.Google.material)
+
+    testImplementation(project(":lib:testcommons"))
 }

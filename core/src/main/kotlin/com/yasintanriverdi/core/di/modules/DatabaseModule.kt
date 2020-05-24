@@ -22,6 +22,5 @@ class DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideMovieDao(movieDatabase: MovieDatabase) =
-        movieDatabase.movieDao()
+    fun provideMovieDao(movieDatabase: MovieDatabase) = movieDatabase.movieDao()
 }

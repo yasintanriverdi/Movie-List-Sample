@@ -30,4 +30,9 @@ object Versions {
     // Plugins
     const val spotless = "3.27.0"
 
+    // Test
+    const val archCore = "2.1.0"
+    const val mockk = "1.10.0"
+    const val junit = "4.12"
+
 }

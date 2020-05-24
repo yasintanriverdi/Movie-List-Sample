@@ -2,7 +2,6 @@ package com.yasintanriverdi.movies.di
 
 import androidx.lifecycle.viewModelScope
 import com.yasintanriverdi.commons.extensions.viewModel
-import com.yasintanriverdi.core.data.AppCoroutineDispatchers
 import com.yasintanriverdi.core.di.scopes.FeatureScope
 import com.yasintanriverdi.core.repositories.MovieRepository
 import dagger.Module
@@ -28,7 +27,6 @@ class MoviesModule(
     @Provides
     fun provideMovieDataSource(
         moviesRepository: MovieRepository,
-        appCoroutineDispatchers: AppCoroutineDispatchers,
         viewModel: MoviesViewModel
-    ) = MoviesPageDataSource(moviesRepository, viewModel.viewModelScope, appCoroutineDispatchers.io)
+    ) = MoviesPageDataSource(moviesRepository, viewModel.viewModelScope)
 }

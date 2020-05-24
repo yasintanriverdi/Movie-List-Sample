@@ -42,4 +42,11 @@ dependencies {
     implementation(Dependencies.Retrofit.retrofit)
     implementation(Dependencies.Retrofit.moshi)
     implementation(Dependencies.OkHttp.okhttp)
+
+    // Test
+    testImplementation(project(":lib:testcommons"))
+    testImplementation(Dependencies.Test.archCore)
+    testImplementation(Dependencies.Test.kotlin)
+    testImplementation(Dependencies.Test.coroutines)
+    testImplementation(Dependencies.Test.mockk)
 }

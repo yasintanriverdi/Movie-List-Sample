@@ -1,23 +1,24 @@
 package com.yasintanriverdi.movies
 
+import androidx.annotation.VisibleForTesting
+import androidx.annotation.VisibleForTesting.PACKAGE_PRIVATE
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import com.yasintanriverdi.core.data.DataState
 import com.yasintanriverdi.core.data.Result
 import com.yasintanriverdi.core.data.entities.Movie
 import com.yasintanriverdi.core.repositories.MovieRepository
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class MoviesPageDataSource @Inject constructor(
+open class MoviesPageDataSource @Inject constructor(
     private val moviesRepository: MovieRepository,
-    private val scope: CoroutineScope,
-    private val dispatcher: CoroutineDispatcher
+    private val scope: CoroutineScope
 ) : PageKeyedDataSource<Int, Movie>() {
 
-    val dataState = MutableLiveData<DataState>()
+    @VisibleForTesting(otherwise = PACKAGE_PRIVATE)
+    internal val dataState = MutableLiveData<DataState>()
     private var retry: (() -> Unit)? = null
 
     override fun loadInitial(
@@ -25,7 +26,7 @@ class MoviesPageDataSource @Inject constructor(
         callback: LoadInitialCallback<Int, Movie>
     ) {
         dataState.postValue(DataState.Loading)
-        scope.launch(dispatcher) {
+        scope.launch {
             when (val response = moviesRepository.fetchMovies(1)) {
                 is Result.Success -> {
                     val movies = response.data
@@ -43,7 +44,7 @@ class MoviesPageDataSource @Inject constructor(
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
         val page = params.key
         dataState.postValue(DataState.Loading)
-        scope.launch(dispatcher) {
+        scope.launch {
             when (val response = moviesRepository.fetchMovies(page)) {
                 is Result.Success -> {
                     val movies = response.data

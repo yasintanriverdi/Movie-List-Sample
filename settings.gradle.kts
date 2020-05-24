@@ -4,6 +4,7 @@ include(
     "lib:commons",
     "lib:navigation",
     ":lib:resources",
+    ":lib:testcommons",
     ":feature:movies",
     ":feature:moviedetail"
 )

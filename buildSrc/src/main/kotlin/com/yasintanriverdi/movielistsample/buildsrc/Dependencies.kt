@@ -30,17 +30,6 @@ object Dependencies {
             const val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.fragment}"
         }
 
-        object Test {
-            const val core = "androidx.test:core:${Versions.test}"
-            const val runner = "androidx.test:runner:${Versions.test}"
-            const val rules = "androidx.test:rules:${Versions.test}"
-
-            const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espresso}"
-
-            const val coroutines =
-                "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
-        }
-
         object Lifecycle {
             const val extensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycle}"
             const val viewmodelKtx =
@@ -83,5 +72,22 @@ object Dependencies {
     object Glide {
         const val core = "com.github.bumptech.glide:glide:${Versions.glide}"
         const val compiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+    }
+
+    object Test {
+        const val archCore = "androidx.arch.core:core-testing:${Versions.archCore}"
+        const val core = "androidx.test:core:${Versions.test}"
+        const val runner = "androidx.test:runner:${Versions.test}"
+        const val rules = "androidx.test:rules:${Versions.test}"
+
+        const val espressoCore = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+
+        const val coroutines =
+            "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
+        const val kotlin = "org.jetbrains.kotlin:kotlin-test:${Versions.kotlin}"
+
+        const val mockk = "io.mockk:mockk:${Versions.mockk}"
+
+        const val junit = "junit:junit:${Versions.junit}"
     }
 }
